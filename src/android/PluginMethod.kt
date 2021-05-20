@@ -14,7 +14,7 @@ enum class PluginMethod(val value: String) {
     SET_INTERSTITIAL_CALLBACK("setInterstitialAdCallback"),
     IS_INTERSTITIAL_AD_LOADED("isInterstitialAdLoaded"),
     SHOW_INTERSTITIAL_AD("showInterstitialAd"),
-    SET__REWARDED_AD_CALLBACK("setRewardedAdCallback"),
+    SET_REWARDED_AD_CALLBACK("setRewardedAdCallback"),
     IS_REWARDED_AD_LOADED("isRewardedAdLoaded"),
     SHOW_REWARDED_AD("showRewardedAd"),
 }

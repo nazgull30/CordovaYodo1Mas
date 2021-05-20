@@ -8,11 +8,13 @@ import org.json.JSONObject
 fun CallbackContext.fireEvent(event: Event, error: Yodo1MasError) {
     val message = JSONObject().put("event", event.value).put("error", error)
     val result = PluginResult(PluginResult.Status.OK, message)
+    result.keepCallback = true
     this.sendPluginResult(result)
 }
 
 fun CallbackContext.fireEvent(event: Event) {
     val message = JSONObject().put("event", event.value)
     val result = PluginResult(PluginResult.Status.OK, message)
+    result.keepCallback = true
     this.sendPluginResult(result)
 }

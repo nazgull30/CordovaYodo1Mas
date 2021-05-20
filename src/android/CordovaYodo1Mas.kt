@@ -22,25 +22,23 @@ class CordovaYodo1Mas : CordovaPlugin() {
     override fun execute(action: String, args: JSONArray, callback: CallbackContext): Boolean {
         Log.w("cordova", "CordovaYodo1Mas -> execute $action")
 
-        cordova.activity.runOnUiThread {
-            when(action) {
-                PluginMethod.INIT.value ->  init(args.optString(0), callback)
-                PluginMethod.SET_GDPR.value -> setGDPR(args.optBoolean(0))
-                PluginMethod.SET_CCPA.value ->  setCCPA(args.optBoolean(0))
-                PluginMethod.SET_COPPA.value -> setCOPPA(args.optBoolean(0))
-                PluginMethod.SET_BANNER_CALLBACK.value -> bannerCallback = callback
-                PluginMethod.IS_BANNER_AD_LOADED.value -> isBannerAdLoaded()
-                PluginMethod.SHOW_BANNER_AD.value -> showBannerAd()
-                PluginMethod.SHOW_BANNER_AD_WITH_ALIGN.value -> showBannerAdWithAlign(args.optInt(0))
-                PluginMethod.SHOW_BANNER_AD_WITH_ALIGN_AND_OFFSET.value -> showBannerAdWithAlignAndOffset(args.optInt(0), args.optInt(1), args.optInt(2))
-                PluginMethod.DISMISS_BANNER_AD.value -> dismissBannerAd()
-                PluginMethod.SET_INTERSTITIAL_CALLBACK.value -> interstitialCallback = callback
-                PluginMethod.IS_INTERSTITIAL_AD_LOADED.value -> isInterstitialAdLoaded()
-                PluginMethod.SHOW_INTERSTITIAL_AD.value -> showInterstitialAd()
-                PluginMethod.SET__REWARDED_AD_CALLBACK.value -> rewardedCallback = callback
-                PluginMethod.IS_REWARDED_AD_LOADED.value -> isRewardedAdLoaded()
-                PluginMethod.SHOW_REWARDED_AD.value -> showRewardedAd()
-            }
+        when(action) {
+            PluginMethod.INIT.value ->  init(args.optString(0), callback)
+            PluginMethod.SET_GDPR.value -> setGDPR(args.optBoolean(0))
+            PluginMethod.SET_CCPA.value ->  setCCPA(args.optBoolean(0))
+            PluginMethod.SET_COPPA.value -> setCOPPA(args.optBoolean(0))
+            PluginMethod.SET_BANNER_CALLBACK.value -> bannerCallback = callback
+            PluginMethod.IS_BANNER_AD_LOADED.value -> isBannerAdLoaded(callback)
+            PluginMethod.SHOW_BANNER_AD.value -> showBannerAd()
+            PluginMethod.SHOW_BANNER_AD_WITH_ALIGN.value -> showBannerAdWithAlign(args.optInt(0))
+            PluginMethod.SHOW_BANNER_AD_WITH_ALIGN_AND_OFFSET.value -> showBannerAdWithAlignAndOffset(args.optInt(0), args.optInt(1), args.optInt(2))
+            PluginMethod.DISMISS_BANNER_AD.value -> dismissBannerAd()
+            PluginMethod.SET_INTERSTITIAL_CALLBACK.value -> interstitialCallback = callback
+            PluginMethod.IS_INTERSTITIAL_AD_LOADED.value -> isInterstitialAdLoaded(callback)
+            PluginMethod.SHOW_INTERSTITIAL_AD.value -> showInterstitialAd()
+            PluginMethod.SET_REWARDED_AD_CALLBACK.value -> rewardedCallback = callback
+            PluginMethod.IS_REWARDED_AD_LOADED.value -> isRewardedAdLoaded(callback)
+            PluginMethod.SHOW_REWARDED_AD.value -> showRewardedAd()
         }
         return true
     }
@@ -138,10 +136,10 @@ class CordovaYodo1Mas : CordovaPlugin() {
     /* Banner
      * ********************************************************************** */
 
-    private fun isBannerAdLoaded() {
+    private fun isBannerAdLoaded(callback: CallbackContext) {
         val isBannerAdLoaded = isBannerAdLoaded;
         Log.w("cordova", "CordovaYodo1Mas -> isBannerAdLoaded: $isBannerAdLoaded")
-        bannerCallback?.sendPluginResult(PluginResult(PluginResult.Status.OK, isBannerAdLoaded))
+        callback.sendPluginResult(PluginResult(PluginResult.Status.OK, isBannerAdLoaded))
     }
 
     private val isBannerAdLoaded = Yodo1Mas.getInstance().isBannerAdLoaded
@@ -184,10 +182,10 @@ class CordovaYodo1Mas : CordovaPlugin() {
     /* Interstitial
      * ********************************************************************** */
 
-    private fun isInterstitialAdLoaded() {
+    private fun isInterstitialAdLoaded(callback: CallbackContext) {
         val isInterstitialAdLoaded = isInterstitialAdLoaded;
         Log.w("cordova", "CordovaYodo1Mas -> isInterstitialAdLoaded: $isInterstitialAdLoaded")
-        interstitialCallback?.sendPluginResult(PluginResult(PluginResult.Status.OK, isInterstitialAdLoaded))
+        callback.sendPluginResult(PluginResult(PluginResult.Status.OK, isInterstitialAdLoaded))
     }
 
     private val isInterstitialAdLoaded: Boolean
@@ -206,10 +204,10 @@ class CordovaYodo1Mas : CordovaPlugin() {
     /* Rewarded Video
      * ********************************************************************** */
 
-    private fun isRewardedAdLoaded() {
+    private fun isRewardedAdLoaded(callback: CallbackContext) {
         val isRewardedAdLoaded = isRewardedAdLoaded;
         Log.w("cordova", "CordovaYodo1Mas -> isRewardedAdLoaded: $isRewardedAdLoaded")
-        interstitialCallback?.sendPluginResult(PluginResult(PluginResult.Status.OK, isRewardedAdLoaded))
+        callback.sendPluginResult(PluginResult(PluginResult.Status.OK, isRewardedAdLoaded))
     }
 
     private val isRewardedAdLoaded: Boolean

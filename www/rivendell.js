@@ -54,16 +54,16 @@ rivendell.isBannerAdLoaded = function(callback) {
     cordova.exec(callback, null, "CordovaYodo1Mas", "isBannerAdLoaded");
 }
 
-rivendell.showBannerAd = function(callback){
-    cordova.exec(callback, null, "CordovaYodo1Mas", "showBannerAd");
+rivendell.showBannerAd = function(){
+    cordova.exec(null, null, "CordovaYodo1Mas", "showBannerAd");
 }
 
-rivendell.showBannerAdWithAlign = function(align, callback) {
-    cordova.exec(callback, null, "CordovaYodo1Mas", "showBannerAdWithAlign", [align]);
+rivendell.showBannerAdWithAlign = function(align) {
+    cordova.exec(null, null, "CordovaYodo1Mas", "showBannerAdWithAlign", [align]);
 }
 
-rivendell.showBannerAdWithAlignAndOffset = function(align, offsetX, offsetY, callback) {
-    cordova.exec(callback, null, "CordovaYodo1Mas", "showBannerAdWithAlignAndOffset", [align, offsetX, offsetX]);
+rivendell.showBannerAdWithAlignAndOffset = function(align, offsetX, offsetY) {
+    cordova.exec(null, null, "CordovaYodo1Mas", "showBannerAdWithAlignAndOffset", [align, offsetX, offsetY]);
 }
 
 rivendell.dismissBannerAd = function () {
@@ -78,8 +78,8 @@ rivendell.isInterstitialAdLoaded = function (callback) {
     cordova.exec(callback, null, "CordovaYodo1Mas", "isInterstitialAdLoaded");
 }
 
-rivendell.showInterstitialAd = function (callback) {
-    cordova.exec(callback, null, "CordovaYodo1Mas", "showInterstitialAd");
+rivendell.showInterstitialAd = function () {
+    cordova.exec(null, null, "CordovaYodo1Mas", "showInterstitialAd");
 }
 
 rivendell.setRewardedAdCallback = function(callbacks) {
@@ -90,8 +90,8 @@ rivendell.isRewardedAdLoaded = function (callback) {
     cordova.exec(callback, null, "CordovaYodo1Mas", "isRewardedAdLoaded");
 }
 
-rivendell.showRewardedAd = function (callback) {
-    cordova.exec(callback, null, "CordovaYodo1Mas", "showRewardedAd");
+rivendell.showRewardedAd = function () {
+    cordova.exec(null, null, "CordovaYodo1Mas", "showRewardedAd");
 }
 
 if (typeof module !== 'undefined') {
