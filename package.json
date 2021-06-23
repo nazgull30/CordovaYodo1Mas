@@ -1,7 +1,7 @@
 {
   "name": "cordova-yodo",
   "version": "4.2.1",
-  "description": "Yodo1 MAS plugin for Cordova"
+  "description": "Yodo1 MAS plugin for Cordova",
   "cordova": {
     "id": "cordova-admob",
     "platforms": [
