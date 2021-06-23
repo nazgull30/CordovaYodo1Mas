@@ -1,7 +1,7 @@
 {
-  "name": "cordova-admob",
+  "name": "cordova-yodo",
   "version": "4.2.1",
-  "description": "Google AdMob Ads plugin for Cordova, Phonegap, Ionic/Angular and Intel XDK. Monetize your app with one javascript line. Android SDK v7.5, iOS SDK v7.3.1. With support for tappx and auto-detect internet connection.",
+  "description": "Yodo1 MAS plugin for Cordova"
   "cordova": {
     "id": "cordova-admob",
     "platforms": [
@@ -11,13 +11,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/appfeel/admob-google-cordova.git"
+    "url": "git+https://github.com/nazgull30/CordovaYodo1Mas.git"
   },
   "keywords": [
     "ad",
     "ads",
-    "admob",
-    "google",
     "advertising",
     "advertisment",
     "publicity",
@@ -25,12 +23,8 @@
     "win",
     "play",
     "services",
-    "iad",
-    "flurry",
     "monetization",
     "money",
-    "appfeel",
-    "tappx",
     "ecosystem:cordova",
     "cordova-android",
     "cordova-ios"
@@ -39,10 +33,10 @@
     "name": "cordova",
     "version": ">=4.0.0"
   },
-  "author": "AppFeel",
+  "author": "nazgul30",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/appfeel/admob-google-cordova/issues"
+    "url": "https://github.com/nazgull30/CordovaYodo1Mas.git"
   },
-  "homepage": "https://github.com/appfeel/admob-google-cordova#readme"
+  "homepage": "https://github.com/nazgull30/CordovaYodo1Mas.git"
 }
