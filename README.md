@@ -1,6 +1,6 @@
 Cordova Yodo1 MAS plugin<br>
 =====
-This is an iOs Yodo1Mas plugin for Cordova.
+This is Yodo1 MAS plugin for Cordova.
 
 When you integrate the SDK, you import the SDK library file into your project so you can use that file’s functions. Integrating the MAS SDK into your mobile app project gives you access to MAS's fully managed monetization solution. This solution taps into multiple add mediation platforms, selecting the one best suited for your game and monetizing through high quality ad networks that serve in-app ads.
 
