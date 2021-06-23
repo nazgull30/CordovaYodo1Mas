@@ -1,5 +1,3 @@
-*<p style="font-size: small;" align="right"><a style="color:#232323" color="#232323" href="http://appfeel.com">Made in Barcelona with <span color="#FCB">Love</span> and <span color="#BBCCFF">Code</span></a></p>*
-
 Cordova Yodo1 MAS plugin<br>
 =====
 This is an iOs Yodo1Mas plugin for Cordova.
