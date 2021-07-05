@@ -27,19 +27,20 @@ NSString *ON_REWARDED_AD_CLOSED = @"on_rewarded_ad_closed";
 @property (nonatomic, copy) NSString* bannerCallbackID;
 @property (nonatomic, weak) id <CDVCommandDelegate> commandDelegate;
 
-- (void)onAdOpened:(Yodo1MasAdEvent *)event;
-- (void)onAdClosed:(Yodo1MasAdEvent *)event;
-- (void)onAdError:(Yodo1MasAdEvent *)event error:(Yodo1MasError *)error;
-
 @end
 
 
 @implementation CordovaYodo1MasBannerAd
 
+- (void)setBannerAdDelegate {
+    [Yodo1Mas sharedInstance].bannerAdDelegate = self;
+}
+
 - (void)onAdOpened:(Yodo1MasAdEvent *)event {
     NSLog(@"CordovaYodo1MasBannerAd -> onAdOpened");
     NSDictionary *vals = @{@"event": ON_BANNER_AD_OPENED};
     CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:self.bannerCallbackID];
 }
 
@@ -47,6 +48,7 @@ NSString *ON_REWARDED_AD_CLOSED = @"on_rewarded_ad_closed";
     NSLog(@"CordovaYodo1MasBannerAd -> onAdClosed");
 	NSDictionary *vals = @{@"event": ON_BANNER_AD_CLOSED};
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.bannerCallbackID];
 }
 
@@ -55,6 +57,7 @@ NSString *ON_REWARDED_AD_CLOSED = @"on_rewarded_ad_closed";
         NSLog(@"CordovaYodo1MasBannerAd -> onAdError, %d", (int)error.code);
 		NSDictionary *vals = @{@"event": ON_BANNER_AD_ERROR, @"error": error};
 		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+		[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:self.bannerCallbackID];
     }
 }
@@ -67,34 +70,37 @@ NSString *ON_REWARDED_AD_CLOSED = @"on_rewarded_ad_closed";
 @property (nonatomic, copy) NSString* interstitialCallbackID;
 @property (nonatomic, weak) id <CDVCommandDelegate> commandDelegate;
 
-- (void)onAdOpened:(Yodo1MasAdEvent *)event;
-- (void)onAdClosed:(Yodo1MasAdEvent *)event;
-- (void)onAdError:(Yodo1MasAdEvent *)event error:(Yodo1MasError *)error;
-
 @end
 
 
 @implementation CordovaYodo1MasInterstitialAd
 
+- (void)setInterstitialAdDelegate {
+    [Yodo1Mas sharedInstance].interstitialAdDelegate = self;
+}
+
 - (void)onAdOpened:(Yodo1MasAdEvent *)event {
-    NSLog(@"GodotYodo1MasInterstitialAd -> onAdOpened");
+    NSLog(@"CordovaYodo1MasInterstitialAd -> onAdOpened");
 	NSDictionary *vals = @{@"event": ON_INTERSTITIAL_AD_OPENED};
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.interstitialCallbackID];
 }
 
 - (void)onAdClosed:(Yodo1MasAdEvent *)event {
-    NSLog(@"GodotYodo1MasInterstitialAd -> onAdClosed");
+    NSLog(@"CordovaYodo1MasInterstitialAd -> onAdClosed");
 	NSDictionary *vals = @{@"event": ON_INTERSTITIAL_AD_CLOSED};
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.interstitialCallbackID];
 }
 
 - (void)onAdError:(Yodo1MasAdEvent *)event error:(Yodo1MasError *)error {
     if (error.code != Yodo1MasErrorCodeAdLoadFail) {
-        NSLog(@"GodotYodo1MasInterstitialAd -> onAdError, %d", (int)error.code);
+        NSLog(@"CordovaYodo1MasInterstitialAd -> onAdError, %d", (int)error.code);
 		NSDictionary *vals = @{@"event": ON_INTERSTITIAL_AD_ERROR, @"error": error};
 		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+		[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:self.interstitialCallbackID];
     }
 }
@@ -107,41 +113,45 @@ NSString *ON_REWARDED_AD_CLOSED = @"on_rewarded_ad_closed";
 @property (nonatomic, copy) NSString* rewardAdCallbackID;
 @property (nonatomic, weak) id <CDVCommandDelegate> commandDelegate;
 
-- (void)onAdOpened:(Yodo1MasAdEvent *)event;
-- (void)onAdClosed:(Yodo1MasAdEvent *)event;
-- (void)onAdRewardEarned:(Yodo1MasAdEvent *)event;
-- (void)onAdError:(Yodo1MasAdEvent *)event error:(Yodo1MasError *)error;
 @end
 
 
 @implementation CordovaYodo1MasRewardedAd
 
+- (void)setRewardAdDelegate {
+    [Yodo1Mas sharedInstance].rewardAdDelegate = self;
+}
+
 - (void)onAdOpened:(Yodo1MasAdEvent *)event {
-    NSLog(@"GodotYodo1MasRewardedAd -> onAdOpened");
+    NSLog(@"CordovaYodo1MasRewardedAd -> onAdOpened");
 	NSDictionary *vals = @{@"event": ON_REWARDED_AD_OPENED};
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.rewardAdCallbackID];
 }
 
 - (void)onAdClosed:(Yodo1MasAdEvent *)event {
-    NSLog(@"GodotYodo1MasRewardedAd -> onAdClosed");
+    NSLog(@"CordovaYodo1MasRewardedAd -> onAdClosed");
 	NSDictionary *vals = @{@"event": ON_REWARDED_AD_CLOSED};
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.rewardAdCallbackID];
 }
 
 - (void)onAdRewardEarned:(Yodo1MasAdEvent *)event {
-    NSLog(@"GodotYodo1MasRewardedAd -> onAdRewardEarned");
+    NSLog(@"CordovaYodo1MasRewardedAd -> onAdRewardEarned");
 	NSDictionary *vals = @{@"event": ON_REWARDED_AD_EARNED};
 	CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+	[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 	[self.commandDelegate sendPluginResult:pluginResult callbackId:self.rewardAdCallbackID];
 }
 
 - (void)onAdError:(Yodo1MasAdEvent *)event error:(Yodo1MasError *)error {
     if (error.code != Yodo1MasErrorCodeAdLoadFail) {
-        NSLog(@"GodotYodo1MasWrapper -> GodotYodo1MasRewardAd onAdError, %d", (int)error.code);
+        NSLog(@"CordovaYodo1MasRewardedAd -> onAdError, %d", (int)error.code);
 		NSDictionary *vals = @{@"event": ON_REWARDED_AD_ERROR, @"error": error};
 		CDVPluginResult* pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsDictionary:vals];
+		[pluginResult setKeepCallback:[NSNumber numberWithBool:YES]];
 		[self.commandDelegate sendPluginResult:pluginResult callbackId:self.rewardAdCallbackID];
     }
 }
@@ -150,31 +160,47 @@ NSString *ON_REWARDED_AD_CLOSED = @"on_rewarded_ad_closed";
 
 // END CALLBACKS
 
-
-
 @implementation CordovaYodo1Mas
 
 bool initialized;
 
 - (void) setBannerCallback:(CDVInvokedUrlCommand *)command {
-	CordovaYodo1MasBannerAd *bannerAd = [[CordovaYodo1MasBannerAd alloc] init];
+//	CordovaYodo1MasBannerAd *bannerAd = [[CordovaYodo1MasBannerAd alloc] init];
+    static CordovaYodo1MasBannerAd *bannerAd;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        bannerAd = [[CordovaYodo1MasBannerAd alloc] init];
+    });
 	bannerAd.bannerCallbackID = command.callbackId;
 	bannerAd.commandDelegate = self.commandDelegate;
-	[Yodo1Mas sharedInstance].bannerAdDelegate = bannerAd;
+//	[Yodo1Mas sharedInstance].bannerAdDelegate = bannerAd;
+    [bannerAd setBannerAdDelegate];
 }
 
 - (void) setInterstitialAdCallback:(CDVInvokedUrlCommand *)command {
-	CordovaYodo1MasInterstitialAd *interstitialAd = [[CordovaYodo1MasInterstitialAd alloc] init];
+//	CordovaYodo1MasInterstitialAd *interstitialAd = [[CordovaYodo1MasInterstitialAd alloc] init];
+    static CordovaYodo1MasInterstitialAd *interstitialAd;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        interstitialAd = [[CordovaYodo1MasInterstitialAd alloc] init];
+    });
 	interstitialAd.interstitialCallbackID = command.callbackId;
 	interstitialAd.commandDelegate = self.commandDelegate;
-	[Yodo1Mas sharedInstance].interstitialAdDelegate = interstitialAd;
+//	[Yodo1Mas sharedInstance].interstitialAdDelegate = interstitialAd;
+    [interstitialAd setInterstitialAdDelegate];
 }
 
 - (void) setRewardedAdCallback:(CDVInvokedUrlCommand *)command {
-	CordovaYodo1MasRewardedAd *rewardedAd = [[CordovaYodo1MasRewardedAd alloc] init];
+//	CordovaYodo1MasRewardedAd *rewardedAd = [[CordovaYodo1MasRewardedAd alloc] init];
+    static CordovaYodo1MasRewardedAd *rewardedAd;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        rewardedAd = [[CordovaYodo1MasRewardedAd alloc] init];
+    });
 	rewardedAd.rewardAdCallbackID = command.callbackId;
 	rewardedAd.commandDelegate = self.commandDelegate;
-	[Yodo1Mas sharedInstance].rewardAdDelegate = rewardedAd;
+//	[Yodo1Mas sharedInstance].rewardAdDelegate = rewardedAd.self;
+    [rewardedAd setRewardAdDelegate];
 }
 
 
