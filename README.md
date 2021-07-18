@@ -21,7 +21,7 @@ First of all, you need download this repository.
 
 To install this plugin, follow the [Command-line Interface Guide](http://cordova.apache.org/docs/en/edge/guide_cli_index.md.html#The%20Command-line%20Interface). You can use one of the following command lines:
 
-* `cordova platform add ios
+* `cordova platform add ios`
 * `cordova platform add android`
 * `cordova plugin add cordova-plugin-device`
 
